@@ -1,7 +1,7 @@
 **This is a template README.md.  Be sure to update this with project specific content that describes your api test project.**
 
 # pension-scheme-return-api-tests
-API test suite for the `<digital service name>` using ScalaTest and [play-ws](https://github.com/playframework/play-ws) client.  
+API test suite for the `Pension Scheme Return` using ScalaTest and [play-ws](https://github.com/playframework/play-ws) client.  
 
 ## Running the tests
 
