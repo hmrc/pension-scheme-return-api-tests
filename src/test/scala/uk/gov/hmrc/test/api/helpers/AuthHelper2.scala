@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.api.models
+package uk.gov.hmrc.test.api.helpers
 
-import play.api.libs.json.{Json, OFormat}
+import org.scalatest.Assertions.fail
+import uk.gov.hmrc.test.api.service.AuthService_2
 
-case class User(firstName: String, lastName: String, nino: String, dateOfBirth: String)
+import javax.inject.Inject
 
-object User {
-  implicit val userJsonFormat: OFormat[User] = Json.format[User]
-  val ninoUser: User                         = User("Luke", "Wood", "EG724113D", "1960-04-06")
+
+class AuthHelper2 @Inject()(authService: AuthService_2) {
+
+  def getBearerToken: String = {
+    val token = authService.getBearerToken
+    token.header("Authorization").getOrElse(fail("Could not obtain bearer token"))
+  }
+
 }

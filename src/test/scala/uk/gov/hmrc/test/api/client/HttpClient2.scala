@@ -14,23 +14,16 @@
  * limitations under the License.
  */
 
-/*
- * Copyright 2024 HM Revenue & Customs
- *
- */
-
 package uk.gov.hmrc.test.api.client
 
 import akka.actor.ActorSystem
-import play.api.libs.json.JsValue
 import play.api.libs.ws.DefaultBodyWritables._
-import play.api.libs.ws.JsonBodyWritables.writeableOf_JsValue
 import play.api.libs.ws.StandaloneWSRequest
 import play.api.libs.ws.ahc.StandaloneAhcWSClient
 
 import scala.concurrent.{ExecutionContext, Future}
 
-trait HttpClient {
+trait HttpClient2 {
 
   implicit val actorSystem: ActorSystem = ActorSystem()
   val wsClient: StandaloneAhcWSClient   = StandaloneAhcWSClient()
@@ -40,7 +33,7 @@ trait HttpClient {
     wsClient
       .url(url)
       .withHttpHeaders(headers: _*)
-      .get()
+      .get
 
   def post(url: String, bodyAsJson: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
     wsClient
@@ -48,21 +41,9 @@ trait HttpClient {
       .withHttpHeaders(headers: _*)
       .post(bodyAsJson)
 
-  def postWithJson(url: String, body: JsValue, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
-    wsClient
-      .url(url)
-      .withHttpHeaders(headers: _*)
-      .post(body)
-
-  def putWithJson(url: String, body: JsValue, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
-    wsClient
-      .url(url)
-      .withHttpHeaders(headers: _*)
-      .put(body)
-
   def delete(url: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
     wsClient
       .url(url)
       .withHttpHeaders(headers: _*)
-      .delete()
+      .delete
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.api.models
+package uk.gov.hmrc.test.api.specs
 
-import play.api.libs.json.{Json, OFormat}
+import org.scalatest._
+import org.scalatest.concurrent.Eventually
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.test.api.helpers.{AuthHelper, TestDataHelper}
+import uk.gov.hmrc.test.api.service.AuthService
 
-case class IndividualsLinks(name: String, href: String, title: String)
-
-object IndividualsLinks {
-  implicit val userJsonFormat: OFormat[IndividualsLinks] = Json.format[IndividualsLinks]
+trait BaseSpec2 extends AnyFeatureSpec with GivenWhenThen with BeforeAndAfterAll with Matchers with Eventually {
+  val authHelper                = new AuthHelper
+  val testDataHelper            = new TestDataHelper
 }
