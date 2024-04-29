@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +18,19 @@ package uk.gov.hmrc.test.api.helpers
 
 import play.api.libs.json.Json
 import play.api.libs.ws.StandaloneWSRequest
-import uk.gov.hmrc.test.api.models.User
-import uk.gov.hmrc.test.api.service.IndividualsMatchingService
+import uk.gov.hmrc.test.api.models.Overview
+import uk.gov.hmrc.test.api.service.PensionSchemeReturnService
 
-class IndividualsMatchingHelper {
+import java.time.LocalDate
 
-  val individualsMatchingServiceAPI: IndividualsMatchingService = new IndividualsMatchingService
+class OverviewHelper {
 
-  def getIndividualByMatchId(authBearerToken: String, individualsMatchId: String): User = {
-    val individualsMatchGetResponse: StandaloneWSRequest#Self#Response =
-      individualsMatchingServiceAPI.getIndividualByMatchId(authBearerToken, individualsMatchId)
-    (Json.parse(individualsMatchGetResponse.body) \ "individual").as[User]
+  val pensionSchemeReturnServiceAPI: PensionSchemeReturnService = new PensionSchemeReturnService
+
+  def listOverviewsByPstrAndDate(authBearerToken: String, pstr: String, toDate: LocalDate, fromDate: LocalDate): Seq[Overview] = {
+    val overviewsGetResponse: StandaloneWSRequest#Self#Response =
+      pensionSchemeReturnServiceAPI.getOverviewByPstrAndDate(authBearerToken, pstr, toDate, fromDate)
+    Json.parse(overviewsGetResponse.body).as[Seq[Overview]]
   }
 
 }

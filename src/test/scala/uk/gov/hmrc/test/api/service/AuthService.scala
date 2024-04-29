@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,39 +26,34 @@ import scala.concurrent.duration._
 class AuthService extends HttpClient {
 
   val host: String        = TestConfiguration.url("auth")
-  val authPayload: String =
-    s"""
-       |{
-       |  "clientId": "id-123232",
-       |  "authProvider": "PrivilegedApplication",
-       |  "applicationId":"app-1",
-       |  "applicationName": "App 1",
-       |  "enrolments": ["read:individuals-matching",
-       |  "read:individuals-income",
-       |  "read:individuals-income-sa",
-       |  "read:individuals-income-sa-additional-information",
-       |  "read:individuals-income-sa-employments",
-       |  "read:individuals-income-sa-foreign",
-       |  "read:individuals-income-sa-interests-and-dividends",
-       |  "read:individuals-income-sa-partnerships",
-       |  "read:individuals-income-sa-pensions-and-state-benefits",
-       |  "read:individuals-income-sa-other",
-       |  "read:individuals-income-sa-self-employments",
-       |  "read:individuals-income-sa-source",
-       |  "read:individuals-income-sa-summary",
-       |  "read:individuals-income-sa-trusts",
-       |  "read:individuals-income-sa-uk-properties",
-       |  "read:individuals-income-paye",
-       |  "read:individuals-employments",
-       |  "read:individuals-employments-paye"],
-       |  "ttl": 5000
-       |}
-     """.stripMargin
+
+  val authPayloadPSR: String =
+    s"""{
+       |  "credId": "1234",
+       |  "credentialStrength": "strong",
+       |  "confidenceLevel": 50,
+       |  "credentialRole": "User",
+       |  "affinityGroup": "Organisation",
+       |  "email": "user@test.com",
+       |  "excludeGnapToken": true,
+       |  "enrolments": [
+       |    {
+       |      "key": "HMRC-PODS-ORG",
+       |      "identifiers": [
+       |        {
+       |          "key": "PsaID",
+       |          "value": "A2100005"
+       |        }
+       |      ],
+       |      "state": "Activated"
+       |    }
+       |  ]
+       |}""".stripMargin
 
   def postLogin: StandaloneWSRequest#Self#Response = {
-    val url = s"$host/application/session/login"
+    val url = s"$host/government-gateway/session/login"
     Await.result(
-      post(url, authPayload, ("Content-Type", "application/json")),
+      post(url, authPayloadPSR, ("Content-Type", "application/json")),
       10.seconds
     )
   }
