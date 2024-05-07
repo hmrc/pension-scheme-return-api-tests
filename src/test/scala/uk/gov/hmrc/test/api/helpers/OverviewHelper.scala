@@ -16,16 +16,16 @@
 
 package uk.gov.hmrc.test.api.helpers
 
+import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
 import play.api.libs.json.Json
 import play.api.libs.ws.StandaloneWSRequest
 import uk.gov.hmrc.test.api.models.Overview
-import uk.gov.hmrc.test.api.service.PensionSchemeReturnService
-
+import uk.gov.hmrc.test.api.service.PensionSchemeReturnOverviewService
 import java.time.LocalDate
 
 class OverviewHelper {
 
-  val pensionSchemeReturnServiceAPI: PensionSchemeReturnService = new PensionSchemeReturnService
+  val pensionSchemeReturnServiceAPI: PensionSchemeReturnOverviewService = new PensionSchemeReturnOverviewService
 
   def listOverviewsByPstrAndDate(authBearerToken: String, pstr: String, toDate: LocalDate, fromDate: LocalDate): Seq[Overview] = {
     val overviewsGetResponse: StandaloneWSRequest#Self#Response =
@@ -33,4 +33,21 @@ class OverviewHelper {
     Json.parse(overviewsGetResponse.body).as[Seq[Overview]]
   }
 
+  def formBundleEndpoint(authBearerToken: String, pstr: String, fbNumber: String) = {
+    val formBundleGetResponse: StandaloneWSRequest#Self#Response =
+      pensionSchemeReturnServiceAPI.getFormBundleEndpoint(authBearerToken, pstr, fbNumber)
+     formBundleGetResponse.status shouldBe 200
+  } :Unit
+
+  def getPSREntityUnprocessedEndpoint(authBearerToken: String, pstr: String, psrVersion: String, periodStartDate: String) = {
+    val formBundleGetResponse: StandaloneWSRequest#Self#Response =
+      pensionSchemeReturnServiceAPI.getPSREntityUnprocessed(authBearerToken, pstr, psrVersion, periodStartDate)
+    formBundleGetResponse.status shouldBe 422
+  }: Unit
+
+  def getPSROverviewBadRequestEndpoint(authBearerToken: String, pstr: String, periodStartDate: String) = {
+    val formBundleGetResponse: StandaloneWSRequest#Self#Response =
+      pensionSchemeReturnServiceAPI.getOverviewByPstrStartDate_BadRequest(authBearerToken, pstr, periodStartDate)
+    formBundleGetResponse.status shouldBe 400
+  }: Unit
 }

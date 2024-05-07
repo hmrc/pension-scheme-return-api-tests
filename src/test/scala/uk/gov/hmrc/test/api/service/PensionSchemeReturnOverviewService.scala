@@ -19,12 +19,11 @@ package uk.gov.hmrc.test.api.service
 import play.api.libs.ws.StandaloneWSRequest
 import uk.gov.hmrc.test.api.client.HttpClient
 import uk.gov.hmrc.test.api.conf.TestConfiguration
-
 import java.time.LocalDate
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
-class PensionSchemeReturnService extends HttpClient {
+class PensionSchemeReturnOverviewService extends HttpClient {
   val host: String = TestConfiguration.url("pension-scheme-return")
   val psrURL: String = s"$host/psr"
 
@@ -38,4 +37,37 @@ class PensionSchemeReturnService extends HttpClient {
       ),
       10.seconds
     )
-}
+
+  def getFormBundleEndpoint(authToken: String, pstr: String, fbNumber: String): StandaloneWSRequest#Self#Response =
+    Await.result(
+      get(
+        s"$psrURL/standard/$pstr?fbNumber=$fbNumber",
+        ("Authorization", authToken),
+        ("CorrelationId", "12345678"),
+        ("Accept", "application/json")
+      ),
+      10.seconds
+    )
+
+  def getPSREntityUnprocessed(authToken: String, pstr: String, psrVersion: String, periodStartDate: String): StandaloneWSRequest#Self#Response =
+    Await.result(
+      get(
+        s"$psrURL/standard/$pstr?psrVersion=$psrVersion&periodStartDate=$periodStartDate",
+        ("Authorization", authToken),
+        ("CorrelationId", "12345678"),
+        ("Accept", "application/json")
+      ),
+      10.seconds
+    )
+
+  def getOverviewByPstrStartDate_BadRequest(authToken: String, pstr: String, startDate: String): StandaloneWSRequest#Self#Response =
+    Await.result(
+      get(
+        s"$psrURL/overview/$pstr?startDate=$startDate",
+        ("Authorization", authToken),
+        ("CorrelationId", "12345678"),
+        ("Accept", "application/json")
+      ),
+      10.seconds
+    )
+  }
