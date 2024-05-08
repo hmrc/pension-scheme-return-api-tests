@@ -26,7 +26,6 @@ class PensionSchemeReturnOverviewSpec extends BaseSpec {
 
   val pensionSchemeReturnServiceAPI: PensionSchemeReturnOverviewService = new PensionSchemeReturnOverviewService
   val authBearerToken: String = authHelper.getAuthBearerToken
-  println(authBearerToken)
 
   Feature("Overview API") {
 
