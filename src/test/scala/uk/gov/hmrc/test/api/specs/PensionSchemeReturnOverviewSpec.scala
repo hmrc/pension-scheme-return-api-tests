@@ -25,7 +25,7 @@ import java.time.LocalDate
 class PensionSchemeReturnOverviewSpec extends BaseSpec {
 
   val pensionSchemeReturnServiceAPI: PensionSchemeReturnOverviewService = new PensionSchemeReturnOverviewService
-  val authBearerToken: String = authHelper.getAuthBearerToken
+  val authBearerToken: String                                           = authHelper.getAuthBearerToken
 
   Feature("Overview API") {
 
@@ -33,19 +33,24 @@ class PensionSchemeReturnOverviewSpec extends BaseSpec {
       Given("The user is authenticated")
 
       When("the overview endpoint is called")
-      val actualOverview: Seq[Overview] = overviewHelper.listOverviewsByPstrAndDate(authBearerToken, "24000001IN", LocalDate.of(2024, 4, 6), LocalDate.of(2021, 4, 5))
+      val actualOverview: Seq[Overview] = overviewHelper.listOverviewsByPstrAndDate(
+        authBearerToken,
+        "24000001IN",
+        LocalDate.of(2024, 4, 6),
+        LocalDate.of(2021, 4, 5)
+      )
       Then("I am returned the overview details")
       actualOverview shouldBe overviews
     }
 
     Scenario("Verify 200 response when calling formBundle endpoint") {
       When("the form Bundle endpoint is called the response should be 200")
-      overviewHelper.formBundleEndpoint(authBearerToken, "24000001IN", "000000021221" )
+      overviewHelper.formBundleEndpoint(authBearerToken, "24000001IN", "000000021221")
     }
 
     Scenario("Verify 422 response when calling unprocessed entity endpoint") {
       When("the endpoint is called with unprocessed entity so the response should be 422")
-      overviewHelper.getPSREntityUnprocessedEndpoint(authBearerToken, "24000001IN", "456","9999-04-06")
+      overviewHelper.getPSREntityUnprocessedEndpoint(authBearerToken, "24000001IN", "456", "9999-04-06")
     }
 
     Scenario("Verify 400 Bad Request response when calling Overview with Invalid date") {

@@ -24,7 +24,7 @@ class VersionHelper {
 
   val pensionSchemeReturnVersionsServiceAPI: PensionSchemeReturnVersionService = new PensionSchemeReturnVersionService
 
-  def listVersionsByPstrAndDate(authBearerToken: String, pstr: String, startDate:String): Unit = {
+  def listVersionsByPstrAndDate(authBearerToken: String, pstr: String, startDate: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnVersionsServiceAPI.getVersionsByPstrAndDate(authBearerToken, pstr, startDate)
     versionsGetResponse.status shouldBe 200
@@ -34,7 +34,7 @@ class VersionHelper {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnVersionsServiceAPI.getNotFoundVersionsEndpoint(authBearerToken, pstr, startDate)
     versionsGetResponse.status shouldBe 200
-  } :Unit
+  }: Unit
 
   def getPSRVersionsForbiddenEndpoint(authBearerToken: String, pstr: String, startDate: String) = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
@@ -44,7 +44,11 @@ class VersionHelper {
 
   def getPSRVersionBadRequestEndpoint(authBearerToken: String, pstr: String, periodStartDate: String) = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
-      pensionSchemeReturnVersionsServiceAPI.getVersionsByPstrStartDate_BadRequest(authBearerToken, pstr, periodStartDate)
+      pensionSchemeReturnVersionsServiceAPI.getVersionsByPstrStartDate_BadRequest(
+        authBearerToken,
+        pstr,
+        periodStartDate
+      )
     versionsGetResponse.status shouldBe 400
   }: Unit
 }
