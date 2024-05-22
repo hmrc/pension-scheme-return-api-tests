@@ -24,10 +24,15 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 
 class PensionSchemeReturnOverviewService extends HttpClient {
-  val host: String = TestConfiguration.url("pension-scheme-return")
+  val host: String   = TestConfiguration.url("pension-scheme-return")
   val psrURL: String = s"$host/psr"
 
-  def getOverviewByPstrAndDate(authToken: String, pstr: String, toDate: LocalDate, fromDate: LocalDate): StandaloneWSRequest#Self#Response =
+  def getOverviewByPstrAndDate(
+    authToken: String,
+    pstr: String,
+    toDate: LocalDate,
+    fromDate: LocalDate
+  ): StandaloneWSRequest#Self#Response =
     Await.result(
       get(
         s"$psrURL/overview/$pstr?toDate=$toDate&fromDate=$fromDate",
@@ -49,7 +54,12 @@ class PensionSchemeReturnOverviewService extends HttpClient {
       10.seconds
     )
 
-  def getPSREntityUnprocessed(authToken: String, pstr: String, psrVersion: String, periodStartDate: String): StandaloneWSRequest#Self#Response =
+  def getPSREntityUnprocessed(
+    authToken: String,
+    pstr: String,
+    psrVersion: String,
+    periodStartDate: String
+  ): StandaloneWSRequest#Self#Response =
     Await.result(
       get(
         s"$psrURL/standard/$pstr?psrVersion=$psrVersion&periodStartDate=$periodStartDate",
@@ -60,7 +70,11 @@ class PensionSchemeReturnOverviewService extends HttpClient {
       10.seconds
     )
 
-  def getOverviewByPstrStartDate_BadRequest(authToken: String, pstr: String, startDate: String): StandaloneWSRequest#Self#Response =
+  def getOverviewByPstrStartDate_BadRequest(
+    authToken: String,
+    pstr: String,
+    startDate: String
+  ): StandaloneWSRequest#Self#Response =
     Await.result(
       get(
         s"$psrURL/overview/$pstr?startDate=$startDate",
@@ -70,4 +84,4 @@ class PensionSchemeReturnOverviewService extends HttpClient {
       ),
       10.seconds
     )
-  }
+}

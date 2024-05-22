@@ -27,7 +27,12 @@ class OverviewHelper {
 
   val pensionSchemeReturnServiceAPI: PensionSchemeReturnOverviewService = new PensionSchemeReturnOverviewService
 
-  def listOverviewsByPstrAndDate(authBearerToken: String, pstr: String, toDate: LocalDate, fromDate: LocalDate): Seq[Overview] = {
+  def listOverviewsByPstrAndDate(
+    authBearerToken: String,
+    pstr: String,
+    toDate: LocalDate,
+    fromDate: LocalDate
+  ): Seq[Overview] = {
     val overviewsGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnServiceAPI.getOverviewByPstrAndDate(authBearerToken, pstr, toDate, fromDate)
     Json.parse(overviewsGetResponse.body).as[Seq[Overview]]
@@ -36,10 +41,15 @@ class OverviewHelper {
   def formBundleEndpoint(authBearerToken: String, pstr: String, fbNumber: String) = {
     val formBundleGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnServiceAPI.getFormBundleEndpoint(authBearerToken, pstr, fbNumber)
-     formBundleGetResponse.status shouldBe 200
-  } :Unit
+    formBundleGetResponse.status shouldBe 200
+  }: Unit
 
-  def getPSREntityUnprocessedEndpoint(authBearerToken: String, pstr: String, psrVersion: String, periodStartDate: String) = {
+  def getPSREntityUnprocessedEndpoint(
+    authBearerToken: String,
+    pstr: String,
+    psrVersion: String,
+    periodStartDate: String
+  ) = {
     val formBundleGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnServiceAPI.getPSREntityUnprocessed(authBearerToken, pstr, psrVersion, periodStartDate)
     formBundleGetResponse.status shouldBe 422

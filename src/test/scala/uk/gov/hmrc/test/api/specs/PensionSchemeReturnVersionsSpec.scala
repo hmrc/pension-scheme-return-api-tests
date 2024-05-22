@@ -16,14 +16,12 @@
 
 package uk.gov.hmrc.test.api.specs
 
-
 import uk.gov.hmrc.test.api.service.PensionSchemeReturnOverviewService
-
 
 class PensionSchemeReturnVersionsSpec extends BaseSpec {
 
   val pensionSchemeReturnServiceAPI: PensionSchemeReturnOverviewService = new PensionSchemeReturnOverviewService
-  val authBearerToken: String = authHelper.getAuthBearerToken
+  val authBearerToken: String                                           = authHelper.getAuthBearerToken
 
   Feature("Versions API") {
 
@@ -36,12 +34,12 @@ class PensionSchemeReturnVersionsSpec extends BaseSpec {
 
     Scenario("Verify 200 response when calling Not Found for versions endpoint") {
       When("the Not Found endpoint is called the response should be 200")
-      versionHelper.getNotFoundVersionsEndpoint(authBearerToken, "24000001IN_Not_found", "2021-04-06" )
+      versionHelper.getNotFoundVersionsEndpoint(authBearerToken, "24000001IN_Not_found", "2021-04-06")
     }
 
     Scenario("Verify 403 Forbidden response when calling versions endpoint") {
       When("the endpoint is called so the response should be 403 Forbidden")
-      versionHelper.getPSRVersionsForbiddenEndpoint(authBearerToken, "24000001IN","2050-04-06")
+      versionHelper.getPSRVersionsForbiddenEndpoint(authBearerToken, "24000001IN", "2050-04-06")
     }
 
     Scenario("Verify 400 Bad Request response when calling Versions with Invalid date") {

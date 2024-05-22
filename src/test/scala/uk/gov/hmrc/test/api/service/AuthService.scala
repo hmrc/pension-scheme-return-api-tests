@@ -25,7 +25,7 @@ import scala.concurrent.duration._
 
 class AuthService extends HttpClient {
 
-  val host: String        = TestConfiguration.url("auth")
+  val host: String = TestConfiguration.url("auth")
 
   val authPayloadPSR: String =
     s"""{

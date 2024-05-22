@@ -24,10 +24,10 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 
 class PensionSchemeReturnVersionService extends HttpClient {
-  val host: String = TestConfiguration.url("pension-scheme-return")
+  val host: String   = TestConfiguration.url("pension-scheme-return")
   val psrURL: String = s"$host/psr"
 
-  def getVersionsByPstrAndDate(authToken: String, pstr: String, startDate:String): StandaloneWSRequest#Self#Response =
+  def getVersionsByPstrAndDate(authToken: String, pstr: String, startDate: String): StandaloneWSRequest#Self#Response =
     Await.result(
       get(
         s"$psrURL/versions/$pstr?startDate=$startDate",
@@ -38,7 +38,11 @@ class PensionSchemeReturnVersionService extends HttpClient {
       10.seconds
     )
 
-  def getNotFoundVersionsEndpoint(authToken: String, pstr: String, startDate: String): StandaloneWSRequest#Self#Response =
+  def getNotFoundVersionsEndpoint(
+    authToken: String,
+    pstr: String,
+    startDate: String
+  ): StandaloneWSRequest#Self#Response =
     Await.result(
       get(
         s"$psrURL/versions/$pstr?startDate=$startDate",
@@ -49,7 +53,11 @@ class PensionSchemeReturnVersionService extends HttpClient {
       10.seconds
     )
 
-  def getVersionsByPstr_Forbidden(authToken: String, pstr: String, startDate: String): StandaloneWSRequest#Self#Response =
+  def getVersionsByPstr_Forbidden(
+    authToken: String,
+    pstr: String,
+    startDate: String
+  ): StandaloneWSRequest#Self#Response =
     Await.result(
       get(
         s"$psrURL/versions/$pstr?startDate=$startDate",
@@ -60,7 +68,11 @@ class PensionSchemeReturnVersionService extends HttpClient {
       10.seconds
     )
 
-  def getVersionsByPstrStartDate_BadRequest(authToken: String, pstr: String, startDate: String): StandaloneWSRequest#Self#Response =
+  def getVersionsByPstrStartDate_BadRequest(
+    authToken: String,
+    pstr: String,
+    startDate: String
+  ): StandaloneWSRequest#Self#Response =
     Await.result(
       get(
         s"$psrURL/overview/$pstr?startDate=$startDate",
@@ -70,4 +82,4 @@ class PensionSchemeReturnVersionService extends HttpClient {
       ),
       10.seconds
     )
-  }
+}
