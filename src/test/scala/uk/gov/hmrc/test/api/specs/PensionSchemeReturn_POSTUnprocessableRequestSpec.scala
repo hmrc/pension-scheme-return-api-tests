@@ -18,39 +18,41 @@ package uk.gov.hmrc.test.api.specs
 
 import uk.gov.hmrc.test.api.service.PensionSchemeReturnPOSTRequestService
 
-
 class PensionSchemeReturn_POSTUnprocessableRequestSpec extends BaseSpec {
 
-  val pensionSchemeReturnPOSTServiceAPI: PensionSchemeReturnPOSTRequestService = new PensionSchemeReturnPOSTRequestService
-  val authBearerToken: String = authHelper.getAuthBearerToken
-  val payload: String =
+  val pensionSchemeReturnPOSTServiceAPI: PensionSchemeReturnPOSTRequestService =
+    new PensionSchemeReturnPOSTRequestService
+  val authBearerToken: String                                                  = authHelper.getAuthBearerToken
+  val payload: String                                                          =
     """
       |{
-      |    "minimalRequiredSubmission": {
-      |        "reportDetails": {
-      |            "pstr": "00000042IN",
-      |            "periodStart": "2024-04-05",
-      |            "periodEnd": "2023-04-06"
-      |        },
-      |        "accountingPeriods": [
-      |            [
-      |                "2023-04-06",
-      |                "2024-04-05"
-      |            ]
-      |        ],
-      |        "schemeDesignatory": {
-      |            "openBankAccount": true,
-      |            "activeMembers": 23,
-      |            "deferredMembers": 45,
-      |            "pensionerMembers": 6,
-      |            "totalPayments": 74
-      |        }
+      |  "minimalRequiredSubmission": {
+      |    "reportDetails": {
+      |      "pstr": "00000042IN",
+      |      "periodStart": "2024-04-05",
+      |      "periodEnd": "2023-04-06"
       |    },
-      |    "checkReturnDates": true
+      |    "accountingPeriodDetails": {
+      |      "recordVersion": "001",
+      |      "accountingPeriods": [
+      |        [
+      |          "2023-04-06",
+      |          "2024-04-05"
+      |        ]
+      |      ]
+      |    },
+      |    "schemeDesignatory": {
+      |      "openBankAccount": true,
+      |      "activeMembers": 23,
+      |      "deferredMembers": 45,
+      |      "pensionerMembers": 6,
+      |      "totalPayments": 74
+      |    }
+      |  },
+      |  "checkReturnDates": true
       |}
       |""".stripMargin
-
-  Feature("POST Requests for Standard PSR API") {
+  Feature("POST Request with Unprocessable Standard PSR API") {
 
     Scenario("Verify 422 response when POST request with Unprocessed Entity") {
       When("the Unprocessed Entity endpoint is called the response should be 422")

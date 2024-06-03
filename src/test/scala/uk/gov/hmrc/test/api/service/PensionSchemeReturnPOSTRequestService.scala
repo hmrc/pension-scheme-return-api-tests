@@ -24,8 +24,8 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 
 class PensionSchemeReturnPOSTRequestService extends HttpClient {
-  val host: String   = TestConfiguration.url("pension-scheme-return")
-  val psrURL: String = s"$host/psr"
+  val host: String        = TestConfiguration.url("pension-scheme-return")
+  val psrURL: String      = s"$host/psr"
   val payloadData: String =
     """
       |{
@@ -162,8 +162,7 @@ class PensionSchemeReturnPOSTRequestService extends HttpClient {
       |        "optTotalValueQuotedShares": 12.34
       |    }
       |}
-      |"""
-    .stripMargin
+      |""".stripMargin
 
   def postStandardPSR(authToken: String, payload: String): StandaloneWSRequest#Self#Response =
     Await.result(

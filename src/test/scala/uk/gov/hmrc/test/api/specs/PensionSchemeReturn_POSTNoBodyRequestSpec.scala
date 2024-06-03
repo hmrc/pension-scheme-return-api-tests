@@ -18,17 +18,17 @@ package uk.gov.hmrc.test.api.specs
 
 import uk.gov.hmrc.test.api.service.PensionSchemeReturnPOSTRequestService
 
-
 class PensionSchemeReturn_POSTNoBodyRequestSpec extends BaseSpec {
 
-  val pensionSchemeReturnPOSTServiceAPI: PensionSchemeReturnPOSTRequestService = new PensionSchemeReturnPOSTRequestService
-  val authBearerToken: String = authHelper.getAuthBearerToken
-  val payload: String =
+  val pensionSchemeReturnPOSTServiceAPI: PensionSchemeReturnPOSTRequestService =
+    new PensionSchemeReturnPOSTRequestService
+  val authBearerToken: String                                                  = authHelper.getAuthBearerToken
+  val payload: String                                                          =
     """
       |
       |""".stripMargin
 
-  Feature("POST Requests for Standard PSR API") {
+  Feature("POST Request with No Body Standard PSR API") {
 
     Scenario("Verify 400 response when POST request with no body") {
       When("the Not Found endpoint is called the response should be 400")
