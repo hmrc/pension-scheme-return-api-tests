@@ -18,70 +18,73 @@ package uk.gov.hmrc.test.api.specs
 
 import uk.gov.hmrc.test.api.service.PensionSchemeReturnPOSTRequestService
 
-
 class PensionSchemeReturn_POSTLoansOnlySpec extends BaseSpec {
 
-  val pensionSchemeReturnPOSTServiceAPI: PensionSchemeReturnPOSTRequestService = new PensionSchemeReturnPOSTRequestService
-  val authBearerToken: String = authHelper.getAuthBearerToken
-  val payload: String =
+  val pensionSchemeReturnPOSTServiceAPI: PensionSchemeReturnPOSTRequestService =
+    new PensionSchemeReturnPOSTRequestService
+  val authBearerToken: String                                                  = authHelper.getAuthBearerToken
+  val payload: String                                                          =
     """
       |{
-      |    "minimalRequiredSubmission": {
-      |        "reportDetails": {
-      |            "pstr": "00000042IN",
-      |            "periodStart": "2023-04-06",
-      |            "periodEnd": "2024-04-05"
-      |        },
-      |        "accountingPeriods": [
-      |            [
-      |                "2023-04-06",
-      |                "2024-04-05"
-      |            ]
-      |        ],
-      |        "schemeDesignatory": {
-      |            "openBankAccount": true,
-      |            "activeMembers": 23,
-      |            "deferredMembers": 45,
-      |            "pensionerMembers": 6,
-      |            "totalPayments": 74
-      |        }
+      |  "minimalRequiredSubmission": {
+      |    "reportDetails": {
+      |      "pstr": "00000042IN",
+      |      "periodStart": "2023-04-06",
+      |      "periodEnd": "2024-04-05"
       |    },
-      |    "checkReturnDates": true,
-      |    "loans": {
-      |        "schemeHadLoans": true,
-      |        "loanTransactions": [
-      |            {
-      |                "recipientIdentityType": {
-      |                    "identityType": "individual",
-      |                    "reasonNoIdNumber": "sdfsdf"
-      |                },
-      |                "loanRecipientName": "sdfsdfds",
-      |                "connectedPartyStatus": true,
-      |                "datePeriodLoanDetails": {
-      |                    "dateOfLoan": "2023-02-12",
-      |                    "loanTotalSchemeAssets": 3,
-      |                    "loanPeriodInMonths": 9
-      |                },
-      |                "loanAmountDetails": {
-      |                    "loanAmount": 9,
-      |                    "capRepaymentCY": 8,
-      |                    "amountOutstanding": 7
-      |                },
-      |                "equalInstallments": true,
-      |                "loanInterestDetails": {
-      |                    "loanInterestAmount": 8,
-      |                    "loanInterestRate": 8,
-      |                    "intReceivedCY": 6
-      |                },
-      |                "optSecurityGivenDetails": "kjsdfvsd",
-      |                "optOutstandingArrearsOnLoan": 273
-      |            }
+      |    "accountingPeriodDetails": {
+      |      "recordVersion": "001",
+      |      "accountingPeriods": [
+      |        [
+      |          "2023-04-06",
+      |          "2024-04-05"
       |        ]
+      |      ]
+      |    },
+      |    "schemeDesignatory": {
+      |      "openBankAccount": true,
+      |      "activeMembers": 23,
+      |      "deferredMembers": 45,
+      |      "pensionerMembers": 6,
+      |      "totalPayments": 74
       |    }
+      |  },
+      |  "checkReturnDates": true,
+      |  "loans": {
+      |    "schemeHadLoans": true,
+      |    "loanTransactions": [
+      |      {
+      |        "recipientIdentityType": {
+      |          "identityType": "individual",
+      |          "reasonNoIdNumber": "sdfsdf"
+      |        },
+      |        "loanRecipientName": "sdfsdfds",
+      |        "connectedPartyStatus": true,
+      |        "datePeriodLoanDetails": {
+      |          "dateOfLoan": "2023-02-12",
+      |          "loanTotalSchemeAssets": 3,
+      |          "loanPeriodInMonths": 9
+      |        },
+      |        "loanAmountDetails": {
+      |          "loanAmount": 9,
+      |          "capRepaymentCY": 8,
+      |          "amountOutstanding": 7
+      |        },
+      |        "equalInstallments": true,
+      |        "loanInterestDetails": {
+      |          "loanInterestAmount": 8,
+      |          "loanInterestRate": 8,
+      |          "intReceivedCY": 6
+      |        },
+      |        "optSecurityGivenDetails": "kjsdfvsd",
+      |        "optOutstandingArrearsOnLoan": 273
+      |      }
+      |    ]
+      |  }
       |}
       |""".stripMargin
 
-  Feature("POST Requests for Standard PSR API") {
+  Feature("POST Request for Loans only Standard PSR API") {
 
     Scenario("Verify 204 response when POST request with Loans Only") {
       When("Loans Only is called the response should be 204")
