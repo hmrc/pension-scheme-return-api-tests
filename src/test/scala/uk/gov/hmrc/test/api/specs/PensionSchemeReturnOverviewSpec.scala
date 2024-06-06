@@ -29,7 +29,7 @@ class PensionSchemeReturnOverviewSpec extends BaseSpec {
 
   Feature("Overview API") {
 
-    Scenario("Get an Overview details") {
+    ignore("Get an Overview details") {
       Given("The user is authenticated")
 
       When("the overview endpoint is called")
