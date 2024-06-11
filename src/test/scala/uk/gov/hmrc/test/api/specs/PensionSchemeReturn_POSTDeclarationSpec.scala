@@ -352,7 +352,10 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |    "transfersOutCompleted": true,
       |    "lumpSumReceived": true,
       |    "memberContributionMade": true,
-      |    "pensionReceived": true,
+      |    "pensionReceived": {
+      |      "made": true,
+      |      "completed": true
+      |    },
       |    "benefitsSurrenderedDetails": {
       |      "made": true,
       |      "completed": true
