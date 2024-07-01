@@ -37,6 +37,8 @@ class PensionSchemeReturnOverviewService extends HttpClient {
       get(
         s"$psrURL/overview/$pstr?toDate=$toDate&fromDate=$fromDate",
         ("Authorization", authToken),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
@@ -48,6 +50,8 @@ class PensionSchemeReturnOverviewService extends HttpClient {
       get(
         s"$psrURL/standard/$pstr?fbNumber=$fbNumber",
         ("Authorization", authToken),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
@@ -64,6 +68,8 @@ class PensionSchemeReturnOverviewService extends HttpClient {
       get(
         s"$psrURL/standard/$pstr?psrVersion=$psrVersion&periodStartDate=$periodStartDate",
         ("Authorization", authToken),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
@@ -80,6 +86,8 @@ class PensionSchemeReturnOverviewService extends HttpClient {
         s"$psrURL/overview/$pstr?startDate=$startDate",
         ("Authorization", authToken),
         ("CorrelationId", "12345678"),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
         ("Accept", "application/json")
       ),
       10.seconds

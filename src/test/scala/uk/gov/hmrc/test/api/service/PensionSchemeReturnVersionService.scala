@@ -62,6 +62,8 @@ class PensionSchemeReturnVersionService extends HttpClient {
       get(
         s"$psrURL/versions/$pstr?startDate=$startDate",
         ("Authorization", authToken),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
@@ -77,6 +79,8 @@ class PensionSchemeReturnVersionService extends HttpClient {
       get(
         s"$psrURL/overview/$pstr?startDate=$startDate",
         ("Authorization", authToken),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
