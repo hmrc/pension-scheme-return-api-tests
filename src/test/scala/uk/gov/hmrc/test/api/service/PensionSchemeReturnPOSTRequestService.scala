@@ -170,6 +170,8 @@ class PensionSchemeReturnPOSTRequestService extends HttpClient {
         s"$psrURL/standard",
         payload,
         ("Authorization", authToken),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
         ("CorrelationId", "12345678"),
         ("Content-Type", "application/json")
       ),
