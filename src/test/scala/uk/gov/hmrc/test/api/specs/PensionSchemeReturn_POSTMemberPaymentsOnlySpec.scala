@@ -77,7 +77,7 @@ class PensionSchemeReturn_POSTMemberPaymentsOnlySpec extends BaseSpec {
       |          "dateOfBirth": "1990-10-10",
       |          "nino": "AB123456A"
       |        },
-      |        "state": "Active",
+      |        "state": "New",
       |        "employerContributions": [
       |          {
       |            "employerName": "Acme Ltd",
@@ -132,7 +132,7 @@ class PensionSchemeReturn_POSTMemberPaymentsOnlySpec extends BaseSpec {
       |          "dateOfBirth": "1995-06-01",
       |          "noNinoReason": "some reason"
       |        },
-      |        "state": "Active",
+      |        "state": "New",
       |        "employerContributions": [
       |          {
       |            "employerName": "Test Ltd",
