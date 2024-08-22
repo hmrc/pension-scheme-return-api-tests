@@ -57,5 +57,4 @@ class AuthService extends HttpClient {
       10.seconds
     )
   }
-
 }

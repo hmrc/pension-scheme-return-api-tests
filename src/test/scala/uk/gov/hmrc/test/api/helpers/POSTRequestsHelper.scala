@@ -18,26 +18,26 @@ package uk.gov.hmrc.test.api.helpers
 
 import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
 import play.api.libs.ws.StandaloneWSRequest
-import uk.gov.hmrc.test.api.service.{PensionSchemeReturnPOSTRequestService}
+import uk.gov.hmrc.test.api.service.PensionSchemeReturnPOSTRequestService
 
 class POSTRequestsHelper {
 
   val pensionSchemeReturnPOSTServiceAPI: PensionSchemeReturnPOSTRequestService =
     new PensionSchemeReturnPOSTRequestService
 
-  def postFullBodyRequestEndpoint(authBearerToken: String, payload: String) = {
+  def postFullBodyRequestEndpoint(authBearerToken: String, payload: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnPOSTServiceAPI.postStandardPSR(authBearerToken, payload)
     versionsGetResponse.status shouldBe 204
   }: Unit
 
-  def postNoBodyRequestEndpoint(authBearerToken: String, payload: String) = {
+  def postNoBodyRequestEndpoint(authBearerToken: String, payload: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnPOSTServiceAPI.postStandardPSR(authBearerToken, payload)
     versionsGetResponse.status shouldBe 400
   }: Unit
 
-  def postUnprocessedEntityRequestEndpoint(authBearerToken: String, payload: String) = {
+  def postUnprocessedEntityRequestEndpoint(authBearerToken: String, payload: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
       pensionSchemeReturnPOSTServiceAPI.postStandardPSR(authBearerToken, payload)
     versionsGetResponse.status shouldBe 422

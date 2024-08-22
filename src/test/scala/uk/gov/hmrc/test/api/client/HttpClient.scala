@@ -16,10 +16,11 @@
 
 package uk.gov.hmrc.test.api.client
 
-import akka.actor.ActorSystem
+import org.apache.pekko.actor.ActorSystem
 import play.api.libs.ws.DefaultBodyWritables._
 import play.api.libs.ws.StandaloneWSRequest
 import play.api.libs.ws.ahc.StandaloneAhcWSClient
+import play.api.libs.ws.DefaultWSProxyServer
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -28,22 +29,29 @@ trait HttpClient {
   implicit val actorSystem: ActorSystem = ActorSystem()
   val wsClient: StandaloneAhcWSClient   = StandaloneAhcWSClient()
   implicit val ec: ExecutionContext     = ExecutionContext.global
+  lazy val shouldProxyForZap: Boolean   = sys.props.get("security.assessment").exists(_.toBoolean)
+
+  def standAloneWsRequestWithProxyIfConfigSet(standAloneWsRequest: StandaloneWSRequest): StandaloneWSRequest =
+    if (shouldProxyForZap) {
+      standAloneWsRequest.withProxyServer(
+        DefaultWSProxyServer(protocol = Some("http"), host = "localhost", port = 11000)
+      )
+    } else {
+      standAloneWsRequest
+    }
 
   def get(url: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
-    wsClient
-      .url(url)
+    standAloneWsRequestWithProxyIfConfigSet(wsClient.url(url))
       .withHttpHeaders(headers: _*)
       .get()
 
   def post(url: String, bodyAsJson: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
-    wsClient
-      .url(url)
+    standAloneWsRequestWithProxyIfConfigSet(wsClient.url(url))
       .withHttpHeaders(headers: _*)
       .post(bodyAsJson)
 
   def delete(url: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
-    wsClient
-      .url(url)
+    standAloneWsRequestWithProxyIfConfigSet(wsClient.url(url))
       .withHttpHeaders(headers: _*)
       .delete()
 }
