@@ -16,9 +16,14 @@ Run the following commands to start services locally:
 
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100` refers to the given number of seconds to wait for services to pass health checks.    
 
-Then execute the `run_tests.sh` script:
+## run api zap tests locally 
+execute the shell script `run_zap_tests.sh` locally, this will download and export run the local zap and run all api and zap tests locally generates report
 
-`./run_tests.sh <environment>`
+## run api tests locally
+Then execute the `run_tests.sh` script:
+edit the below shell script and add `-Dsecurity.assessment=false`
+
+`./run_tests.sh <environment>` 
 
 The tests default to the `local` environment.  For a complete list of supported param values, see:
  - `src/test/resources/application.conf` for **environment** 
