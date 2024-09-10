@@ -40,6 +40,7 @@ class PensionSchemeReturnOverviewService extends HttpClient {
         ("userName", "TestUserName"),
         ("schemeName", "TestSchemeName"),
         ("CorrelationId", "12345678"),
+        ("srn", "S0000000042"),
         ("Accept", "application/json")
       ),
       10.seconds
@@ -52,6 +53,7 @@ class PensionSchemeReturnOverviewService extends HttpClient {
         ("Authorization", authToken),
         ("userName", "TestUserName"),
         ("schemeName", "TestSchemeName"),
+        ("srn", "S0000000042"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
@@ -70,6 +72,7 @@ class PensionSchemeReturnOverviewService extends HttpClient {
         ("Authorization", authToken),
         ("userName", "TestUserName"),
         ("schemeName", "TestSchemeName"),
+        ("srn", "S0000000042"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
@@ -88,6 +91,7 @@ class PensionSchemeReturnOverviewService extends HttpClient {
         ("CorrelationId", "12345678"),
         ("userName", "TestUserName"),
         ("schemeName", "TestSchemeName"),
+        ("srn", "S0000000042"),
         ("Accept", "application/json")
       ),
       10.seconds
