@@ -172,6 +172,7 @@ class PensionSchemeReturnPOSTRequestService extends HttpClient {
         ("Authorization", authToken),
         ("userName", "TestUserName"),
         ("schemeName", "TestSchemeName"),
+        ("srn", "S0000000042"),
         ("CorrelationId", "12345678"),
         ("Content-Type", "application/json")
       ),

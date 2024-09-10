@@ -33,6 +33,7 @@ class PensionSchemeReturnVersionService extends HttpClient {
         s"$psrURL/versions/$pstr?startDate=$startDate",
         ("Authorization", authToken),
         ("CorrelationId", "12345678"),
+        ("srn", "S0000000042"),
         ("Accept", "application/json")
       ),
       10.seconds
@@ -48,6 +49,7 @@ class PensionSchemeReturnVersionService extends HttpClient {
         s"$psrURL/versions/$pstr?startDate=$startDate",
         ("Authorization", authToken),
         ("CorrelationId", "12345678"),
+        ("srn", "S0000000042"),
         ("Accept", "application/json")
       ),
       10.seconds
@@ -64,6 +66,7 @@ class PensionSchemeReturnVersionService extends HttpClient {
         ("Authorization", authToken),
         ("userName", "TestUserName"),
         ("schemeName", "TestSchemeName"),
+        ("srn", "S0000000042"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
@@ -81,6 +84,7 @@ class PensionSchemeReturnVersionService extends HttpClient {
         ("Authorization", authToken),
         ("userName", "TestUserName"),
         ("schemeName", "TestSchemeName"),
+        ("srn", "S0000000042"),
         ("CorrelationId", "12345678"),
         ("Accept", "application/json")
       ),
