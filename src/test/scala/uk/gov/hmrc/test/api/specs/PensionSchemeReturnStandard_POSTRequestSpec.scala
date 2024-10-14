@@ -42,6 +42,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "schemeDesignatory": {
+      |      "recordVersion": "001",
       |      "openBankAccount": true,
       |      "activeMembers": 23,
       |      "deferredMembers": 45,
@@ -51,6 +52,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |  },
       |  "checkReturnDates": true,
       |  "loans": {
+      |    "recordVersion": "001",
       |    "schemeHadLoans": true,
       |    "loanTransactions": [
       |      {
@@ -83,6 +85,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |  },
       |  "assets": {
       |    "optLandOrProperty": {
+      |      "recordVersion": "001",
       |      "landOrPropertyHeld": true,
       |      "disposeAnyLandOrProperty": true,
       |      "landOrPropertyTransactions": [
@@ -239,6 +242,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "optBorrowing": {
+      |      "recordVersion": "001",
       |      "moneyWasBorrowed": true,
       |      "moneyBorrowed": [
       |        {
@@ -253,6 +257,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "optBonds": {
+      |      "recordVersion": "001",
       |      "bondsWereAdded": true,
       |      "bondsWereDisposed": false,
       |      "bondTransactions": [
@@ -296,6 +301,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "optOtherAssets": {
+      |      "recordVersion": "001",
       |      "otherAssetsWereHeld": true,
       |      "otherAssetsWereDisposed": false,
       |      "otherAssetTransactions": [
@@ -342,24 +348,16 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |    }
       |  },
       |  "membersPayments": {
+      |    "recordVersion": "001",
       |    "employerContributionMade": false,
       |    "unallocatedContribsMade": false,
-      |    "employerContributionsDetails": {
-      |      "made": true,
-      |      "completed": true
-      |    },
-      |    "transfersInCompleted": true,
-      |    "transfersOutCompleted": true,
+      |    "employerContributionMade": true,
+      |    "transfersInMade": true,
+      |    "transfersOutMade": true,
       |    "lumpSumReceived": true,
       |    "memberContributionMade": true,
-      |    "pensionReceived": {
-      |      "made": true,
-      |      "completed": true
-      |    },
-      |    "benefitsSurrenderedDetails": {
-      |      "made": true,
-      |      "completed": true
-      |    },
+      |    "pensionReceived": true,
+      |    "surrenderMade": true,
       |    "memberDetails": [
       |      {
       |        "personalDetails": {
@@ -492,6 +490,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |    ]
       |  },
       |  "shares": {
+      |    "recordVersion": "001",
       |    "optShareTransactions": [
       |      {
       |        "typeOfSharesHeld": "01",
@@ -601,13 +600,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      }
       |    ],
       |    "optTotalValueQuotedShares": 12.34
-      |  },
-      |  "psrDeclaration": {
-      |    "submittedBy": "PSP",
-      |    "submitterId": "21000005",
-      |    "optAuthorisingPSAID": "A2100005",
-      |    "declaration1": true,
-      |    "declaration2": true
       |  }
       |}
       |""".stripMargin
