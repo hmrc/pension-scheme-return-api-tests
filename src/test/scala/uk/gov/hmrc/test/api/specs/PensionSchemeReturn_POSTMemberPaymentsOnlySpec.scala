@@ -53,22 +53,13 @@ class PensionSchemeReturn_POSTMemberPaymentsOnlySpec extends BaseSpec {
       |  "membersPayments": {
       |    "employerContributionMade": false,
       |    "unallocatedContribsMade": false,
-      |    "employerContributionsDetails": {
-      |      "made": true,
-      |      "completed": true
-      |    },
-      |    "transfersInCompleted": true,
-      |    "transfersOutCompleted": true,
+      |    "employerContributionMade": true,
+      |    "transfersInMade": true,
+      |    "transfersOutMade": true,
       |    "lumpSumReceived": true,
       |    "memberContributionMade": true,
-      |    "pensionReceived": {
-      |      "made": true,
-      |      "completed": true
-      |    },
-      |    "benefitsSurrenderedDetails": {
-      |      "made": true,
-      |      "completed": true
-      |    },
+      |    "pensionReceived": true,
+      |    "surrenderMade": true,
       |    "memberDetails": [
       |      {
       |        "personalDetails": {
