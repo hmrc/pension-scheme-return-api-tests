@@ -83,8 +83,8 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |  },
       |  "assets": {
       |    "optLandOrProperty": {
-      |      "landOrPropertyHeld": true,
-      |      "disposeAnyLandOrProperty": true,
+      |      "optLandOrPropertyHeld": true,
+      |      "optDisposeAnyLandOrProperty": true,
       |      "landOrPropertyTransactions": [
       |        {
       |          "propertyDetails": {
@@ -109,9 +109,9 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |            "optConnectedPartyStatus": true,
       |            "totalCostOfLandOrProperty": 1000000,
       |            "optIndepValuationSupport": true,
-      |            "isLandOrPropertyResidential": true,
-      |            "landOrPropertyLeased": false,
-      |            "totalIncomeOrReceipts": 25000
+      |            "optIsLandOrPropertyResidential": true,
+      |            "optLandOrPropertyLeased": false,
+      |            "optTotalIncomeOrReceipts": 25000
       |          },
       |          "optDisposedPropertyTransaction": [
       |            {
@@ -154,9 +154,9 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |            "optConnectedPartyStatus": true,
       |            "totalCostOfLandOrProperty": 1000000,
       |            "optIndepValuationSupport": false,
-      |            "isLandOrPropertyResidential": true,
-      |            "landOrPropertyLeased": false,
-      |            "totalIncomeOrReceipts": 25000
+      |            "optIsLandOrPropertyResidential": true,
+      |            "optLandOrPropertyLeased": false,
+      |            "optTotalIncomeOrReceipts": 25000
       |          },
       |          "optDisposedPropertyTransaction": [
       |            {
@@ -197,15 +197,15 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |            "optConnectedPartyStatus": false,
       |            "totalCostOfLandOrProperty": 14000000,
       |            "optIndepValuationSupport": false,
-      |            "isLandOrPropertyResidential": false,
+      |            "optIsLandOrPropertyResidential": false,
       |            "optLeaseDetails": {
-      |              "lesseeName": "Leasee",
-      |              "leaseGrantDate": "2023-01-17",
-      |              "annualLeaseAmount": 500000,
-      |              "connectedPartyStatus": false
+      |              "optLesseeName": "Leasee",
+      |              "optLeaseGrantDate": "2023-01-17",
+      |              "optAnnualLeaseAmount": 500000,
+      |              "optConnectedPartyStatus": false
       |            },
-      |            "landOrPropertyLeased": true,
-      |            "totalIncomeOrReceipts": 500000
+      |            "optLandOrPropertyLeased": true,
+      |            "optTotalIncomeOrReceipts": 500000
       |          },
       |          "optDisposedPropertyTransaction": [
       |            {
