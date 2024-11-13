@@ -25,13 +25,9 @@ edit the below shell script and add `-Dsecurity.assessment=false`
 
 `./run_tests.sh <environment>` 
 
-The tests default to the `local` environment.  For a complete list of supported param values, see:
- - `src/test/resources/application.conf` for **environment** 
+## run api tests against a test environment
+The tests default run on local environment and docker local only. To run on other environments can refer to `src/test/resources/application.conf`
 
-#### Running the tests against a test environment
-
-To run the tests against an environment set the corresponding `host` environment property as specified under
- `<env>.host.services` in the [application.conf](src/test/resources/application.conf). 
 
 ## Scalafmt
 
