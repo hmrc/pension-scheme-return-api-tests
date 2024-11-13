@@ -96,4 +96,45 @@ class PensionSchemeReturnOverviewService extends HttpClient {
       ),
       10.seconds
     )
+
+  def getOverviewUnauthorizedPSAUser(
+    authToken: String,
+    pstr: String,
+    fromDate: String,
+    toDate: String
+  ): StandaloneWSRequest#Self#Response =
+    Await.result(
+      get(
+        s"$psrURL/overview/$pstr?fromDate=$fromDate&toDate=$toDate",
+        ("Authorization", authToken),
+        ("CorrelationId", "12345678"),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
+        ("srn", "S2400000041"),
+        ("requestRole", "PSA"),
+        ("Accept", "application/json")
+      ),
+      10.seconds
+    )
+
+  def getOverviewAuthorizedPSPUser(
+    authToken: String,
+    pstr: String,
+    fromDate: String,
+    toDate: String
+  ): StandaloneWSRequest#Self#Response =
+    Await.result(
+      get(
+        s"$psrURL/overview/$pstr?fromDate=$fromDate&toDate=$toDate",
+        ("Authorization", authToken),
+        ("CorrelationId", "12345678"),
+        ("userName", "TestUserName"),
+        ("schemeName", "TestSchemeName"),
+        ("srn", "S2400000041"),
+        ("requestRole", "PSP"),
+        ("Accept", "application/json")
+      ),
+      10.seconds
+    )
+
 }

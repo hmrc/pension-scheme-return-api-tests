@@ -60,4 +60,26 @@ class OverviewHelper {
       pensionSchemeReturnServiceAPI.getOverviewByPstrStartDate_BadRequest(authBearerToken, pstr, periodStartDate)
     formBundleGetResponse.status shouldBe 400
   }: Unit
+
+  def getPSRUnauthorizedOverviewEndpoint(
+    authBearerToken: String,
+    pstr: String,
+    periodFromDate: String,
+    periodEndDate: String
+  ) = {
+    val formBundleGetResponse: StandaloneWSRequest#Self#Response =
+      pensionSchemeReturnServiceAPI.getOverviewUnauthorizedPSAUser(authBearerToken, pstr, periodFromDate, periodEndDate)
+    formBundleGetResponse.status shouldBe 401
+  }: Unit
+
+  def getPSPAuthorizedOverviewEndpoint(
+    authBearerToken: String,
+    pstr: String,
+    periodFromDate: String,
+    periodEndDate: String
+  ) = {
+    val formBundleGetResponse: StandaloneWSRequest#Self#Response =
+      pensionSchemeReturnServiceAPI.getOverviewAuthorizedPSPUser(authBearerToken, pstr, periodFromDate, periodEndDate)
+    formBundleGetResponse.status shouldBe 200
+  }: Unit
 }

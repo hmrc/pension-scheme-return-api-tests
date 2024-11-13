@@ -18,14 +18,20 @@ package uk.gov.hmrc.test.api.helpers
 
 import org.scalatest.Assertions.fail
 import play.api.libs.ws.StandaloneWSRequest
-import uk.gov.hmrc.test.api.service.AuthService
+import uk.gov.hmrc.test.api.service.{AuthService, AuthServicePSAPSP}
 
 class AuthHelper {
 
-  val authAPI: AuthService = new AuthService
+  val authAPI: AuthService             = new AuthService
+  val authAPIPSAPSP: AuthServicePSAPSP = new AuthServicePSAPSP
 
   def getAuthBearerToken: String = {
     val authServiceRequestResponse: StandaloneWSRequest#Self#Response = authAPI.postLogin
+    authServiceRequestResponse.header("Authorization").getOrElse(fail("Could not obtain auth bearer token"))
+  }
+
+  def getPSAPSPAuthBearerToken: String = {
+    val authServiceRequestResponse: StandaloneWSRequest#Self#Response = authAPIPSAPSP.postLogin
     authServiceRequestResponse.header("Authorization").getOrElse(fail("Could not obtain auth bearer token"))
   }
 }
