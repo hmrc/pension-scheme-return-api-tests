@@ -28,7 +28,7 @@ class PensionSchemeReturn_GETUnauthorizedOverviewSpec extends BaseSpec {
     Scenario("Get PSR Overview Unauthorised") {
       Given("The user is authenticated")
       When("PSA PSP user accessing the scheme as PSR and the response should be Unauthorized 401")
-      overviewHelper.getPSRUnauthorizedOverviewEndpoint(authBearerToken, "24000001IN", "2024-04-05","2024-04-05")
+      overviewHelper.getPSRUnauthorizedOverviewEndpoint(authBearerToken, "24000001IN", "2024-04-05", "2024-04-05")
     }
 
     Scenario("Get PSP Overview Authorised") {
