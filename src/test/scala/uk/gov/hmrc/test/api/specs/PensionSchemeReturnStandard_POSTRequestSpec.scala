@@ -491,6 +491,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |  },
       |  "shares": {
       |    "recordVersion": "001",
+      |    "optDidSchemeHoldAnyShares": true,
       |    "optShareTransactions": [
       |      {
       |        "typeOfSharesHeld": "01",
@@ -512,7 +513,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |          "costOfShares": 10000,
       |          "supportedByIndepValuation": true,
       |          "optTotalAssetValue": 2000,
-      |          "totalDividendsOrReceipts": 500
+      |          "optTotalDividendsOrReceipts": 500
       |        },
       |        "optDisposedSharesTransaction": [
       |          {
@@ -562,7 +563,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |          "costOfShares": 50000,
       |          "supportedByIndepValuation": true,
       |          "optTotalAssetValue": 40000,
-      |          "totalDividendsOrReceipts": 200
+      |          "optTotalDividendsOrReceipts": 200
       |        },
       |        "optDisposedSharesTransaction": [
       |          {
@@ -595,7 +596,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |          "costOfShares": 120220.34,
       |          "supportedByIndepValuation": true,
       |          "optTotalAssetValue": 10000,
-      |          "totalDividendsOrReceipts": 599.99
+      |          "optTotalDividendsOrReceipts": 599.99
       |        }
       |      }
       |    ],
