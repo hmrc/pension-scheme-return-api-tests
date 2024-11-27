@@ -67,8 +67,8 @@ class PensionSchemeReturn_POSTLoansOnlySpec extends BaseSpec {
       |        },
       |        "loanAmountDetails": {
       |          "loanAmount": 9,
-      |          "capRepaymentCY": 8,
-      |          "amountOutstanding": 7
+      |          "optCapRepaymentCY": 8,
+      |          "optAmountOutstanding": 7
       |        },
       |        "equalInstallments": true,
       |        "loanInterestDetails": {
