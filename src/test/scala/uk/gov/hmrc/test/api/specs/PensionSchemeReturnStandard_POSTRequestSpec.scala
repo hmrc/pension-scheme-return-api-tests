@@ -42,7 +42,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "schemeDesignatory": {
-      |      "recordVersion": "001",
       |      "openBankAccount": true,
       |      "activeMembers": 23,
       |      "deferredMembers": 45,
@@ -52,7 +51,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |  },
       |  "checkReturnDates": true,
       |  "loans": {
-      |    "recordVersion": "001",
       |    "schemeHadLoans": true,
       |    "loanTransactions": [
       |      {
@@ -76,7 +74,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |        "loanInterestDetails": {
       |          "loanInterestAmount": 8,
       |          "loanInterestRate": 8,
-      |          "intReceivedCY": 6
+      |          "optIntReceivedCY": 6
       |        },
       |        "optSecurityGivenDetails": "kjsdfvsd",
       |        "optOutstandingArrearsOnLoan": 273
@@ -85,7 +83,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |  },
       |  "assets": {
       |    "optLandOrProperty": {
-      |      "recordVersion": "001",
       |      "optLandOrPropertyHeld": true,
       |      "optDisposeAnyLandOrProperty": true,
       |      "landOrPropertyTransactions": [
@@ -242,7 +239,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "optBorrowing": {
-      |      "recordVersion": "001",
       |      "moneyWasBorrowed": true,
       |      "moneyBorrowed": [
       |        {
@@ -257,7 +253,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "optBonds": {
-      |      "recordVersion": "001",
       |      "bondsWereAdded": true,
       |      "bondsWereDisposed": false,
       |      "bondTransactions": [
@@ -301,7 +296,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |      ]
       |    },
       |    "optOtherAssets": {
-      |      "recordVersion": "001",
       |      "otherAssetsWereHeld": true,
       |      "otherAssetsWereDisposed": false,
       |      "otherAssetTransactions": [
@@ -348,7 +342,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |    }
       |  },
       |  "membersPayments": {
-      |    "recordVersion": "001",
       |    "employerContributionMade": false,
       |    "unallocatedContribsMade": false,
       |    "employerContributionMade": true,
@@ -490,8 +483,6 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |    ]
       |  },
       |  "shares": {
-      |    "recordVersion": "001",
-      |    "optDidSchemeHoldAnyShares": true,
       |    "optShareTransactions": [
       |      {
       |        "typeOfSharesHeld": "01",
@@ -513,7 +504,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |          "costOfShares": 10000,
       |          "supportedByIndepValuation": true,
       |          "optTotalAssetValue": 2000,
-      |          "optTotalDividendsOrReceipts": 500
+      |          "totalDividendsOrReceipts": 500
       |        },
       |        "optDisposedSharesTransaction": [
       |          {
@@ -563,7 +554,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |          "costOfShares": 50000,
       |          "supportedByIndepValuation": true,
       |          "optTotalAssetValue": 40000,
-      |          "optTotalDividendsOrReceipts": 200
+      |          "totalDividendsOrReceipts": 200
       |        },
       |        "optDisposedSharesTransaction": [
       |          {
@@ -596,11 +587,18 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |          "costOfShares": 120220.34,
       |          "supportedByIndepValuation": true,
       |          "optTotalAssetValue": 10000,
-      |          "optTotalDividendsOrReceipts": 599.99
+      |          "totalDividendsOrReceipts": 599.99
       |        }
       |      }
       |    ],
       |    "optTotalValueQuotedShares": 12.34
+      |  },
+      |  "psrDeclaration": {
+      |    "submittedBy": "PSP",
+      |    "submitterId": "21000005",
+      |    "optAuthorisingPSAID": "A2100005",
+      |    "declaration1": true,
+      |    "declaration2": true
       |  }
       |}
       |""".stripMargin
