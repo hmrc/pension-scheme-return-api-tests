@@ -53,7 +53,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |  "checkReturnDates": true,
       |  "loans": {
       |    "recordVersion": "001",
-      |    "schemeHadLoans": true,
+      |    "optSchemeHadLoans": true,
       |    "loanTransactions": [
       |      {
       |        "recipientIdentityType": {
@@ -79,6 +79,7 @@ class PensionSchemeReturnPOSTRequestsSpec extends BaseSpec {
       |          "optIntReceivedCY": 6
       |        },
       |        "optSecurityGivenDetails": "kjsdfvsd",
+      |        "optArrearsPrevYears" : false,
       |        "optOutstandingArrearsOnLoan": 273
       |      }
       |    ]
