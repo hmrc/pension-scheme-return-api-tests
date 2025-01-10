@@ -52,8 +52,8 @@ class PensionSchemeReturn_POSTBondsOnlySpec extends BaseSpec {
       |  "checkReturnDates": true,
       |  "assets": {
       |    "optBonds": {
-      |      "bondsWereAdded": true,
-      |      "bondsWereDisposed": false,
+      |      "optBondsWereAdded": true,
+      |      "optBondsWereDisposed": false,
       |      "bondTransactions": [
       |        {
       |          "nameOfBonds": "Xenex Bonds",
@@ -62,7 +62,7 @@ class PensionSchemeReturn_POSTBondsOnlySpec extends BaseSpec {
       |          "costOfBonds": 10234.56,
       |          "optConnectedPartyStatus": false,
       |          "bondsUnregulated": false,
-      |          "totalIncomeOrReceipts": 50,
+      |          "optTotalIncomeOrReceipts": 50,
       |          "optBondsDisposed": [
       |            {
       |              "methodOfDisposal": "Sold",
@@ -90,7 +90,7 @@ class PensionSchemeReturn_POSTBondsOnlySpec extends BaseSpec {
       |          "costOfBonds": 2000.5,
       |          "optConnectedPartyStatus": false,
       |          "bondsUnregulated": false,
-      |          "totalIncomeOrReceipts": 300
+      |          "optTotalIncomeOrReceipts": 300
       |        }
       |      ]
       |    }
