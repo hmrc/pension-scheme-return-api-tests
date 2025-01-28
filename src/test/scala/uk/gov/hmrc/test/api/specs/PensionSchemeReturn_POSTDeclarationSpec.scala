@@ -77,7 +77,7 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |          "optIntReceivedCY": 6
       |        },
       |        "optSecurityGivenDetails": "kjsdfvsd",
-      |        "optArrearsPrevYears" : false,
+      |        "optArrearsPrevYears": true,
       |        "optOutstandingArrearsOnLoan": 273
       |      }
       |    ]
@@ -297,8 +297,8 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |      ]
       |    },
       |    "optOtherAssets": {
-      |      "otherAssetsWereHeld": true,
-      |      "otherAssetsWereDisposed": false,
+      |      "optOtherAssetsWereHeld": true,
+      |      "optOtherAssetsWereDisposed": false,
       |      "otherAssetTransactions": [
       |        {
       |          "assetDescription": "Test asset",
@@ -312,8 +312,8 @@ class PensionSchemeReturn_POSTDeclarationSpec extends BaseSpec {
       |          },
       |          "optConnectedStatus": false,
       |          "optIndepValuationSupport": false,
-      |          "movableSchedule29A": false,
-      |          "totalIncomeOrReceipts": 34.56,
+      |          "optMovableSchedule29A": false,
+      |          "optTotalIncomeOrReceipts": 34.56,
       |          "optOtherAssetDisposed": [
       |            {
       |              "methodOfDisposal": "Sold",

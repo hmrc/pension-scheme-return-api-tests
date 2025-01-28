@@ -51,8 +51,8 @@ class PensionSchemeReturn_POSTOtherAssetsOnlySpec extends BaseSpec {
       |  "checkReturnDates": true,
       |  "assets": {
       |    "optOtherAssets": {
-      |      "otherAssetsWereHeld": true,
-      |      "otherAssetsWereDisposed": false,
+      |      "optOtherAssetsWereHeld": true,
+      |      "optOtherAssetsWereDisposed": false,
       |      "otherAssetTransactions": [
       |        {
       |          "assetDescription": "Test asset",
@@ -66,8 +66,8 @@ class PensionSchemeReturn_POSTOtherAssetsOnlySpec extends BaseSpec {
       |          },
       |          "optConnectedStatus": false,
       |          "optIndepValuationSupport": false,
-      |          "movableSchedule29A": false,
-      |          "totalIncomeOrReceipts": 34.56,
+      |          "optMovableSchedule29A": false,
+      |          "optTotalIncomeOrReceipts": 34.56,
       |          "optOtherAssetDisposed": [
       |            {
       |              "methodOfDisposal": "Sold",
